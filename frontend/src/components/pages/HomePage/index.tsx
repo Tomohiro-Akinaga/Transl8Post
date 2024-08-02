@@ -6,9 +6,9 @@ import HomeTemplate from "@/components/templates/HomeTemplate";
 import { client } from "../../../../libs/client";
 
 interface Props {
-  id: string;
-  title: string;
-  body: string;
+  /**
+   * TODO: レスポンスの型定義
+   */
 }
 
 export const BlogsContext = createContext<Props[]>([]);
@@ -18,8 +18,12 @@ const HomePage = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await client.getAllContents({ endpoint: "blog" });
-      setData(result);
+      try {
+        const result = await client.getAllContents({ endpoint: "blog" });
+        setData(result);
+      } catch (error) {
+        console.log(error);
+      }
     };
     fetchData();
   }, []);
