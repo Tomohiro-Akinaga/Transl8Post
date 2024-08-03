@@ -4,15 +4,22 @@ import BlogItem from "@/components/molecules/BlogItem";
 import { BlogsContext } from "../../pages/HomePage";
 
 const Main = () => {
-  const blogs = useContext(BlogsContext);
-
+  const data = useContext(BlogsContext);
+  console.log(data);
+  const blogs = data.map((v) => {
+    return {
+      title: v.title,
+      description: v.body,
+    };
+  });
+  console.log(blogs);
   return (
     <main className={styles.main}>
-      <ul>
+      {/* <ul>
         {blogs.map((v, i) => (
-          <BlogItem key={i} />
+          <BlogItem blog={v} key={i} />
         ))}
-      </ul>
+      </ul> */}
     </main>
   );
 };

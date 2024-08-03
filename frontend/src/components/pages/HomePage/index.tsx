@@ -5,16 +5,10 @@ import React, { createContext, useEffect, useState } from "react";
 import HomeTemplate from "@/components/templates/HomeTemplate";
 import { client } from "../../../../libs/client";
 
-interface Props {
-  /**
-   * TODO: レスポンスの型定義
-   */
-}
-
-export const BlogsContext = createContext<Props[]>([]);
+export const BlogsContext = createContext([]);
 
 const HomePage = () => {
-  const [data, setData] = useState<Props[]>([]);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {

@@ -1,8 +1,11 @@
 import React from "react";
 
-interface Props {}
+interface Props {
+  title: string;
+  description: string;
+}
 
-const BlogItem = () => {
+const BlogItem = ({ blog }: Props) => {
   return (
     <li>
       <h2>ブログタイトル</h2>
