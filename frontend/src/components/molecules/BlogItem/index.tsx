@@ -1,11 +1,16 @@
 import React from "react";
 import styles from "./index.module.css";
 
-const BlogItem = ({ blog }: any) => {
+interface Props {
+  title: string;
+  body: string;
+}
+
+const BlogItem = ({ title, body }: Props) => {
   return (
     <li className={styles.item}>
-      <h2>{blog.title}</h2>
-      <p>{blog.body}</p>
+      <h2>{title}</h2>
+      <p>{body}</p>
     </li>
   );
 };

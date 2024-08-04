@@ -14,11 +14,11 @@ const fetchBlogList = async () => {
 
 export const BlogList = async () => {
   const blogList = await fetchBlogList();
-  console.log(blogList);
+
   return (
     <ul className={styles.list}>
       {blogList.map((v) => (
-        <BlogItem blog={v} />
+        <BlogItem title={v.title} body={v.body} />
       ))}
     </ul>
   );
