@@ -1,20 +1,24 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import styles from "./index.module.css";
-import { TextButton } from "@/components/atoms/TextButton";
+import { TextButton } from "../../atoms/TextButton";
 
 export const Header = () => {
-  const handleClick = () => {
-    console.log("ブログ作成ボタンがクリックされました");
-    /*
-     ** TODO: 作成ボタン押下でブログ作成ページに遷移
-     */
-  };
+  const pathname = usePathname();
+
+  const href = pathname !== "/edit" ? "/edit" : "/";
+
+  const text = pathname !== "/edit" ? "記事作成" : "TOP";
+
   return (
     <header className={styles.header}>
       <h1>Trans8Post</h1>
-      <TextButton onClick={handleClick}>記事を作成</TextButton>
+      <TextButton>
+        <Link href={href}>{text}</Link>
+      </TextButton>
     </header>
   );
 };
