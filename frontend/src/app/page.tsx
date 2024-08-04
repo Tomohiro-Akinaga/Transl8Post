@@ -1,5 +1,6 @@
 import styles from "./page.module.css";
 import { client } from "../../libs/client";
+import { HomePage } from "../components/pages/HomePage/index";
 
 async function getContents() {
   const response = await client.getAllContents({
@@ -11,12 +12,5 @@ async function getContents() {
 }
 
 export default async function Home() {
-  const contents = await getContents();
-  return (
-    <ul>
-      {contents.map((item) => {
-        return <li key={item.id}>{item.title}</li>;
-      })}
-    </ul>
-  );
+  return <HomePage />;
 }
