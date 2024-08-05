@@ -5,6 +5,7 @@ import { TextButton } from "@/components/atoms/TextButton";
 import React, { useState } from "react";
 import styles from "./index.module.css";
 import { client } from "../../../../libs/client";
+import TextArea from "@/components/atoms/TextArea";
 
 export const Form = () => {
   const router = useRouter();
@@ -38,14 +39,8 @@ export const Form = () => {
 
   return (
     <div className={styles.wrapper}>
-      <label>
-        タイトル
-        <textarea onChange={handleChangeTitle} defaultValue={title} />
-      </label>
-      <label>
-        本文
-        <textarea onChange={handleChangeText} defaultValue={text} />
-      </label>
+      <TextArea label={"タイトル"} onChange={handleChangeTitle} />
+      <TextArea label={"本文"} onChange={handleChangeText} />
       <p>{loadingText}</p>
       <div className={styles.buttonArea}>
         <TextButton onClick={handleAccept}>作成</TextButton>
