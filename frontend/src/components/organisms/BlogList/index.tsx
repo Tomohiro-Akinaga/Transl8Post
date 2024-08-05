@@ -1,24 +1,33 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import styles from "./index.module.css";
 import { client } from "../../../../libs/client";
 import BlogItem from "@/components/molecules/BlogItem";
 
-const fetchBlogList = async () => {
-  const response = await client.getAllContents({
-    customRequestInit: { cache: "no-store" },
-    endpoint: "blog",
-  });
+interface Props {
+  title: string;
+  body: string;
+}
 
-  return response;
-};
+export const BlogList = () => {
+  const [blogList, setBlogList] = useState<Props[]>([]);
 
-export const BlogList = async () => {
-  const blogList = await fetchBlogList();
+  useEffect(() => {
+    const fetchBlogList = async () => {
+      const response = await client.getAllContents({
+        customRequestInit: { cache: "no-store" },
+        endpoint: "blog",
+      });
+      setBlogList(response);
+    };
+    fetchBlogList();
+  }, []);
 
   return (
     <ul className={styles.list}>
-      {blogList.map((v) => (
-        <BlogItem title={v.title} body={v.body} />
+      {blogList.map((v, i) => (
+        <BlogItem title={v.title} body={v.body} key={i} />
       ))}
     </ul>
   );
