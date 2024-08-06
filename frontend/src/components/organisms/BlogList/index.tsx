@@ -7,7 +7,9 @@ import BlogItem from "@/components/molecules/BlogItem";
 
 interface Props {
   title: string;
-  body: string;
+  text: string;
+  translatedTitle: string;
+  translatedText: string;
 }
 
 export const BlogList = () => {
@@ -31,7 +33,13 @@ export const BlogList = () => {
     <ul className={styles.list}>
       <p>{loadingText}</p>
       {blogList.map((v, i) => (
-        <BlogItem title={v.title} body={v.body} key={i} />
+        <BlogItem
+          title={v.title}
+          text={v.text}
+          translatedTitle={v.translatedTitle}
+          translatedText={v.translatedText}
+          key={i}
+        />
       ))}
     </ul>
   );

@@ -29,6 +29,7 @@ export const Form = () => {
     setText(e.target.value);
   };
 
+  // 翻訳処理
   const handleTranslate = async () => {
     setLoadingText("翻訳中...");
     const res = await fetch("api/translate", {
@@ -47,12 +48,15 @@ export const Form = () => {
     setLoadingText("翻訳しました");
   };
 
+  // 記事作成処理
   const handleAccept = async () => {
     setLoadingText("作成中...");
     try {
       const response = await client.create({
         endpoint: "blog",
-        content: JSON.parse(`{"title":"${title}", "body":"${text}"}`),
+        content: JSON.parse(
+          `{"title":"${title}", "text":"${text}", "translatedTitle":"${translatedTitle}", "translatedText":"${translatedText}"}`
+        ),
       });
       response && setLoadingText("作成しました");
     } catch (error) {
