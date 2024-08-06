@@ -39,7 +39,9 @@ export const Form = () => {
       }),
     });
     const data = await res.json();
-    console.log(data);
+    /*
+     ** TODO: インデックス以外での取得を検討
+     */
     setTranslatedTitle(data.translations[0].text);
     setTranslatedText(data.translations[1].text);
     setLoadingText("翻訳しました");
