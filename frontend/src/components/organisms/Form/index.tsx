@@ -10,14 +10,16 @@ import { TextArea } from "@/components/atoms/TextArea";
 export const Form = () => {
   const router = useRouter();
 
+  // 日本語タイトルと本文
   const [title, setTitle] = useState<string>("");
   const [text, setText] = useState<string>("");
-  const [loadingText, setLoadingText] = useState<string>("");
 
-  async function getData() {
-    const res = await fetch("/api/translate");
-    console.log(res);
-  }
+  // 翻訳タイトルと本文
+  const [translatedTitle, setTranslatedTitle] = useState<string>("");
+  const [translatedText, setTranslatedText] = useState<string>("");
+
+  // ローディング中テキスト
+  const [loadingText, setLoadingText] = useState<string>("");
 
   const handleChangeTitle = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setTitle(e.target.value);
@@ -28,15 +30,19 @@ export const Form = () => {
   };
 
   const handleTranslate = async () => {
+    setLoadingText("翻訳中...");
     const res = await fetch("api/translate", {
       method: "POST",
       body: JSON.stringify({
-        text: ["Hello, world!"],
-        target_lang: "JA",
+        text: [`${title}`, `${text}`],
+        target_lang: "EN",
       }),
     });
     const data = await res.json();
     console.log(data);
+    setTranslatedTitle(data.translations[0].text);
+    setTranslatedText(data.translations[1].text);
+    setLoadingText("翻訳しました");
   };
 
   const handleAccept = async () => {
@@ -58,6 +64,8 @@ export const Form = () => {
     <div className={styles.wrapper}>
       <TextArea label={"タイトル"} onChange={handleChangeTitle} />
       <TextArea label={"本文"} onChange={handleChangeText} />
+      <h2>翻訳タイトル:{translatedTitle}</h2>
+      <h3>翻訳本文:{translatedText}</h3>
       <p>{loadingText}</p>
       <div className={styles.buttonArea}>
         <TextButton onClick={handleTranslate}>翻訳</TextButton>
