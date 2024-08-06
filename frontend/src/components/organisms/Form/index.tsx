@@ -28,8 +28,15 @@ export const Form = () => {
   };
 
   const handleTranslate = async () => {
-    const res = await fetch("api/translate");
-    console.log(res);
+    const res = await fetch("api/translate", {
+      method: "POST",
+      body: JSON.stringify({
+        text: ["Hello, world!"],
+        target_lang: "JA",
+      }),
+    });
+    const data = await res.json();
+    console.log(data);
   };
 
   const handleAccept = async () => {
