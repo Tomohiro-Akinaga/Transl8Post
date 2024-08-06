@@ -1,11 +1,11 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import { TextButton } from "@/components/atoms/TextButton";
 import React, { useState } from "react";
-import styles from "./index.module.css";
+import { useRouter } from "next/navigation";
 import { client } from "../../../../libs/client";
-import TextArea from "@/components/atoms/TextArea";
+import styles from "./index.module.css";
+import { TextButton } from "@/components/atoms/TextButton";
+import { TextArea } from "@/components/atoms/TextArea";
 
 export const Form = () => {
   const router = useRouter();
@@ -14,12 +14,22 @@ export const Form = () => {
   const [text, setText] = useState<string>("");
   const [loadingText, setLoadingText] = useState<string>("");
 
+  async function getData() {
+    const res = await fetch("/api/translate");
+    console.log(res);
+  }
+
   const handleChangeTitle = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setTitle(e.target.value);
   };
 
   const handleChangeText = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setText(e.target.value);
+  };
+
+  const handleTranslate = async () => {
+    const res = await fetch("api/translate");
+    console.log(res);
   };
 
   const handleAccept = async () => {
@@ -43,6 +53,7 @@ export const Form = () => {
       <TextArea label={"本文"} onChange={handleChangeText} />
       <p>{loadingText}</p>
       <div className={styles.buttonArea}>
+        <TextButton onClick={handleTranslate}>翻訳</TextButton>
         <TextButton onClick={handleAccept}>作成</TextButton>
         <TextButton onClick={handleCancel}>キャンセル</TextButton>
       </div>
