@@ -2,7 +2,6 @@
 
 import React, { useState, createContext } from "react";
 import { useRouter } from "next/navigation";
-import { client } from "../../../../libs/client";
 import styles from "./index.module.css";
 import { TextButton } from "@/components/atoms/TextButton";
 import { TextArea } from "@/components/atoms/TextArea";
@@ -33,7 +32,8 @@ export const Form = () => {
   // 翻訳処理
   const handleTranslate = async () => {
     setLoadingText("翻訳中...");
-    const res = await fetch("api/translate", {
+
+    const response = await fetch("api/translate", {
       method: "POST",
       body: JSON.stringify({
         text: [`${title}`, `${text}`],
@@ -41,7 +41,7 @@ export const Form = () => {
       }),
     });
 
-    const data = await res.json();
+    const data = await response.json();
     /*
      ** TODO: インデックス以外での取得を検討
      */
