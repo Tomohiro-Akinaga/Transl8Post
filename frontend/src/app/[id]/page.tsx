@@ -1,7 +1,8 @@
 import React from "react";
+import BlogDetail from "@/components/organisms/BlogDetail";
 
-const BlogDetail = () => {
-  return <p>ブログ詳細画面です</p>;
+const Detail = async () => {
+  return <BlogDetail />;
 };
 
-export default BlogDetail;
+export default Detail;
