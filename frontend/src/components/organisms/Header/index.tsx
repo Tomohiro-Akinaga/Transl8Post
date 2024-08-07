@@ -9,12 +9,12 @@ export const Header = () => {
   const pathname = usePathname();
 
   const href = pathname === "/" ? "/edit" : "/";
-  const linkText = pathname === "/" ? "記事を作成" : "TOP";
+  const text = pathname === "/" ? "記事を作成" : "TOP";
 
   return (
     <header className={styles.header}>
       <Link href={"/"}>Trans8Post</Link>
-      <Link href={href}>{linkText}</Link>
+      <Link href={href}>{text}</Link>
     </header>
   );
 };
