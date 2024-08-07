@@ -1,8 +1,8 @@
 import React from "react";
-import BlogDetail from "@/components/organisms/BlogDetail";
+import DetailPage from "@/components/pages/DetailPage";
 
 const Detail = async () => {
-  return <BlogDetail />;
+  return <DetailPage />;
 };
 
 export default Detail;

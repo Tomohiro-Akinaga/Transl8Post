@@ -8,8 +8,8 @@ import styles from "./index.module.css";
 export const Header = () => {
   const pathname = usePathname();
 
-  const href = pathname === "/" ? "/edit" : "";
-  const linkText = pathname === "/" ? "記事を作成" : "";
+  const href = pathname === "/" ? "/edit" : "/";
+  const linkText = pathname === "/" ? "記事を作成" : "TOP";
 
   return (
     <header className={styles.header}>
