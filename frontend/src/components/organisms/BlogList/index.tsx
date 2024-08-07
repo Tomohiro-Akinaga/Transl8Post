@@ -6,6 +6,7 @@ import { client } from "../../../../libs/client";
 import BlogItem from "@/components/molecules/BlogItem";
 
 interface Props {
+  id: string;
   title: string;
   text: string;
   translatedTitle: string;
@@ -34,11 +35,12 @@ export const BlogList = () => {
       <p>{loadingText}</p>
       {blogList.map((v, i) => (
         <BlogItem
+          id={v.id}
           title={v.title}
           text={v.text}
           translatedTitle={v.translatedTitle}
           translatedText={v.translatedText}
-          key={i}
+          key={v.id}
         />
       ))}
     </ul>
