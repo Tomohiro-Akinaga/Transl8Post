@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from "react";
 import styles from "./index.module.css";
-import { client } from "../../../../libs/client";
 import BlogItem from "@/components/molecules/BlogItem";
 
 interface Props {

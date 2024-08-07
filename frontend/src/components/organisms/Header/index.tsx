@@ -8,12 +8,12 @@ import styles from "./index.module.css";
 export const Header = () => {
   const pathname = usePathname();
 
-  const href = pathname === "/edit" ? "/" : "/edit";
-  const linkText = pathname === "/edit" ? "TOP" : "記事を作成";
+  const href = pathname === "/" ? "/edit" : "";
+  const linkText = pathname === "/" ? "記事を作成" : "";
 
   return (
     <header className={styles.header}>
-      <h1>Trans8Post</h1>
+      <Link href={"/"}>Trans8Post</Link>
       <Link href={href}>{linkText}</Link>
     </header>
   );
