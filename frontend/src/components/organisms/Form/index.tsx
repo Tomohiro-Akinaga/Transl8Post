@@ -6,6 +6,7 @@ import { client } from "../../../../libs/client";
 import styles from "./index.module.css";
 import { TextButton } from "@/components/atoms/TextButton";
 import { TextArea } from "@/components/atoms/TextArea";
+import Validation from "@/helpers/validation";
 
 export const Form = () => {
   const router = useRouter();
@@ -51,17 +52,21 @@ export const Form = () => {
 
   // 記事作成処理
   const handleAccept = async () => {
-    /*
-     ** TODO: Next.jsのAPIルートを利用して記事を作成。未入力の場合はエラーを表示
-     */
-    setLoadingText("作成中...");
+    await Validation([title, text, translatedTitle, translatedText]);
+
     try {
-      const response = await client.create({
-        endpoint: "blog",
-        content: JSON.parse(
-          `{"title":"${title}", "text":"${text}", "translatedTitle":"${translatedTitle}", "translatedText":"${translatedText}"}`
-        ),
+      setLoadingText("作成中...");
+
+      const response = await fetch("/api/POST", {
+        method: "POST",
+        body: JSON.stringify({
+          title: title,
+          text: text,
+          translatedTitle: translatedTitle,
+          translatedText: translatedText,
+        }),
       });
+
       response && setLoadingText("作成しました");
     } catch (error) {
       setLoadingText("作成に失敗しました");
