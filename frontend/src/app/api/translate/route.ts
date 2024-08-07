@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
   const { text, target_lang } = await req.json();
-  console.log(text);
+
   const response = await fetch("https://api-free.deepl.com/v2/translate", {
     method: "POST",
     headers: {

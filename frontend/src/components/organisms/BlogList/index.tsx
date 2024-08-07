@@ -17,13 +17,11 @@ export const BlogList = () => {
   const [blogList, setBlogList] = useState<Props[]>([]);
   const [loadingText, setLoadingText] = useState<string>("");
 
+  // ブログ一覧取得
   useEffect(() => {
     setLoadingText("読み込み中...");
     const fetchBlogList = async () => {
-      const response = await client.getAllContents({
-        customRequestInit: { cache: "no-store" },
-        endpoint: "blog",
-      });
+      const response = await fetch("api/GET").then((res) => res.json());
       setBlogList(response);
       setLoadingText("");
     };

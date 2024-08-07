@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, createContext } from "react";
 import { useRouter } from "next/navigation";
 import { client } from "../../../../libs/client";
 import styles from "./index.module.css";
@@ -39,6 +39,7 @@ export const Form = () => {
         target_lang: "EN",
       }),
     });
+
     const data = await res.json();
     /*
      ** TODO: インデックス以外での取得を検討
@@ -50,6 +51,9 @@ export const Form = () => {
 
   // 記事作成処理
   const handleAccept = async () => {
+    /*
+     ** TODO: Next.jsのAPIルートを利用して記事を作成。未入力の場合はエラーを表示
+     */
     setLoadingText("作成中...");
     try {
       const response = await client.create({
