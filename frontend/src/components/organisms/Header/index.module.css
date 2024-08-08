@@ -6,3 +6,8 @@
   justify-content: space-around;
   background-color: rgb(227, 227, 227);
 }
+
+.post {
+  background-color: aqua;
+  background-image: url("../../../../public/assets/icon/post.svg");
+}

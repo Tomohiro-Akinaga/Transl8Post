@@ -14,7 +14,6 @@ export const Header = () => {
   return (
     <header className={styles.header}>
       <Link href={"/"}>Trans8Post</Link>
-      <Link href={href}>{text}</Link>
     </header>
   );
 };

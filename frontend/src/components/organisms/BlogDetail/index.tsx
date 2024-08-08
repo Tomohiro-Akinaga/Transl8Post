@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import { TextButton } from "@/components/atoms/TextButton";
-import { title } from "process";
 
 type Blog = {
   id: string;
