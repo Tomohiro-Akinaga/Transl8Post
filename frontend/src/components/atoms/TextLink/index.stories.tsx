@@ -13,11 +13,11 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-/** 会員登録やログイン */
-export const Auth: Story = {
+/** 投稿 */
+export const Action: Story = {
   args: {
-    href: '/',
-    icon: 'post',
+    href: '/edit',
+    icon: 'pen',
     children: '投稿',
   },
 }

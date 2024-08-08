@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 interface Props {
   href: string
-  icon?: string
+  icon?: 'pen' | ''
 }
 
 const TextLink = ({ href, icon, children }: PropsWithChildren<Props>) => {
@@ -15,7 +15,6 @@ const TextLink = ({ href, icon, children }: PropsWithChildren<Props>) => {
 
   return (
     <Link className={classNames()} href={href}>
-      {icon}
       {children}
     </Link>
   )

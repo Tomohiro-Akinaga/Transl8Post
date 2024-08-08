@@ -1,21 +1,17 @@
-"use client";
-
-import React from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import styles from "./index.module.css";
+import React from 'react'
+import styles from './index.module.css'
+import { TextButton } from '@/components/atoms/TextButton'
+import SiteLogo from '@/components/atoms/SiteLogo'
+import HeaderActionArea from '@/components/molecules/HeaderActionArea'
 
 export const Header = () => {
-  const pathname = usePathname();
-
-  const href = pathname === "/" ? "/edit" : "/";
-  const text = pathname === "/" ? "記事を作成" : "TOP";
-
   return (
     <header className={styles.header}>
-      <Link href={"/"}>Trans8Post</Link>
+      <SiteLogo />
+      <HeaderActionArea />
+      {/* <TextButton category={'auth'}>ログアウト</TextButton> */}
     </header>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

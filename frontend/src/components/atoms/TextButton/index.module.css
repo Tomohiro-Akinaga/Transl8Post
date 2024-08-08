@@ -1,7 +1,7 @@
 .button {
   font-size: 14px;
-  height: 40px;
-  padding: 0 30px;
+  height: 30px;
+  padding: 0 15px;
   border: none;
   cursor: pointer;
   transition: background-color 0.2s ease;
@@ -14,19 +14,23 @@
   font-weight: 600;
   color: #fff;
   background-color: #01bfbd;
-  border-radius: 50px;
+  border-radius: 5px;
 }
 
 .button.is-accept {
+  height: 30px;
   background-color: #01bfbd;
   color: #fff;
   border-radius: 5px;
+  padding: 0 20px;
   &:hover {
     background-color: rgb(113, 187, 185);
   }
 }
 
 .button.is-cancel {
+  height: 30px;
+  padding: 0 20px;
   color: #01bfbd;
   background-color: #fff;
   border: solid 1px #01bfbd;
