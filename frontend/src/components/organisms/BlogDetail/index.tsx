@@ -44,11 +44,10 @@ const BlogDetail = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/GET").then(
-          (res) => res.json()
-        );
-        const data = response.find((v: Blog) => v.id === id);
-        setBlog(data);
+        const response = await fetch("http://localhost:3000/api/GET");
+        const data = await response.json();
+        const blog = data.find((v: Blog) => v.id === id);
+        setBlog(blog);
       } catch (error) {
         console.log(error);
       } finally {
