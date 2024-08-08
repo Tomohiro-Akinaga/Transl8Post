@@ -1,22 +1,14 @@
-import React from "react";
-import Link from "next/link";
-import styles from "./index.module.css";
+import React from 'react'
+import Link from 'next/link'
+import styles from './index.module.css'
 
 interface Props {
-  id: string;
-  title: string;
-  text: string;
-  translatedTitle: string;
-  translatedText: string;
+  blog: Blog
 }
 
-const BlogItem = ({
-  id,
-  title,
-  text,
-  translatedTitle,
-  translatedText,
-}: Props) => {
+const BlogItem = ({ blog }: Props) => {
+  const { id, title, text, translatedTitle, translatedText } = blog
+
   return (
     <Link href={`/${id}`} className={styles.item}>
       <h2>{title}</h2>
@@ -24,7 +16,7 @@ const BlogItem = ({
       <h2>{translatedTitle}</h2>
       <p>{translatedText}</p>
     </Link>
-  );
-};
+  )
+}
 
-export default BlogItem;
+export default BlogItem
