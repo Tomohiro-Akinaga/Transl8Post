@@ -13,31 +13,33 @@
 .button.is-auth {
   font-weight: 600;
   color: #fff;
-  background-color: #4267cf;
+  background-color: #01bfbd;
   border-radius: 50px;
 }
 
-.button.is-auth:hover {
-  background-color: rgb(127, 150, 207);
+.button.is-accept {
+  background-color: #01bfbd;
+  color: #fff;
+  border-radius: 5px;
+  &:hover {
+    background-color: rgb(113, 187, 185);
+  }
 }
 
-.button.is-tab {
+.button.is-cancel {
+  color: #01bfbd;
   background-color: #fff;
+  border: solid 1px #01bfbd;
+  border-radius: 5px;
 }
 
-.is-pen::before {
-  content: '';
-  display: block;
-  width: 20px;
-  height: 20px;
-  aspect-ratio: 1;
-  mask-image: url('../../../../public/assets/icon/post.svg');
-  mask-position: center;
-  mask-size: contain;
-  mask-repeat: no-repeat;
-  background: #000;
+.button.is-auth:hover {
+  background-color: rgb(113, 187, 185);
 }
 
-.is-pen::before:hover {
-  background: #4267cf;
+.button.is-cancel:hover {
+  color: rgb(113, 187, 185);
+  background-color: #fff;
+  border: solid 1px rgb(113, 187, 185);
+  border-radius: 5px;
 }

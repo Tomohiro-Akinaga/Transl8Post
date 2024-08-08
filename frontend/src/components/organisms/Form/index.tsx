@@ -1,92 +1,92 @@
-"use client";
+'use client'
 
-import React, { useState } from "react";
-import { useRouter } from "next/navigation";
-import styles from "./index.module.css";
-import { TextButton } from "@/components/atoms/TextButton";
-import { TextArea } from "@/components/atoms/TextArea";
-import Validation from "@/helpers/validation";
+import React, { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import styles from './index.module.css'
+import { TextButton } from '@/components/atoms/TextButton'
+import { TextArea } from '@/components/atoms/TextArea'
+import Validation from '@/helpers/validation'
 
 export const Form = () => {
-  const router = useRouter();
+  const router = useRouter()
 
   // 日本語タイトルと本文
-  const [title, setTitle] = useState<string>("");
-  const [text, setText] = useState<string>("");
+  const [title, setTitle] = useState<string>('')
+  const [text, setText] = useState<string>('')
 
   // 翻訳タイトルと本文
-  const [translatedTitle, setTranslatedTitle] = useState<string>("");
-  const [translatedText, setTranslatedText] = useState<string>("");
+  const [translatedTitle, setTranslatedTitle] = useState<string>('')
+  const [translatedText, setTranslatedText] = useState<string>('')
 
   // ローディング中テキスト
-  const [loadingText, setLoadingText] = useState<string>("");
+  const [loadingText, setLoadingText] = useState<string>('')
 
   const handleChangeTitle = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setTitle(e.target.value);
-  };
+    setTitle(e.target.value)
+  }
 
   const handleChangeText = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setText(e.target.value);
-  };
+    setText(e.target.value)
+  }
 
   // 翻訳処理
   const handleTranslate = async () => {
-    setLoadingText("翻訳中...");
+    setLoadingText('翻訳中...')
 
-    const response = await fetch("api/translate", {
-      method: "POST",
+    const response = await fetch('api/translate', {
+      method: 'POST',
       body: JSON.stringify({
         text: [`${title}`, `${text}`],
-        target_lang: "EN",
+        target_lang: 'EN',
       }),
-    });
+    })
 
-    const data = await response.json();
+    const data = await response.json()
     /*
      ** TODO: インデックス以外での取得を検討
      */
-    setTranslatedTitle(data.translations[0].text);
-    setTranslatedText(data.translations[1].text);
-    setLoadingText("翻訳しました");
-  };
+    setTranslatedTitle(data.translations[0].text)
+    setTranslatedText(data.translations[1].text)
+    setLoadingText('翻訳しました')
+  }
 
   // 記事作成処理
   const handleAccept = async () => {
-    await Validation([title, text, translatedTitle, translatedText]);
+    await Validation([title, text, translatedTitle, translatedText])
 
     try {
-      setLoadingText("作成中...");
+      setLoadingText('作成中...')
 
-      const response = await fetch("/api/POST", {
-        method: "POST",
+      const response = await fetch('/api/POST', {
+        method: 'POST',
         body: JSON.stringify({
           title: title,
           text: text,
           translatedTitle: translatedTitle,
           translatedText: translatedText,
         }),
-      });
+      })
 
-      response && setLoadingText("作成しました");
+      response && setLoadingText('作成しました')
     } catch (error) {
-      setLoadingText("作成に失敗しました");
+      setLoadingText('作成に失敗しました')
     }
-  };
+  }
 
-  const handleCancel = () => router.push("/");
+  const handleCancel = () => router.push('/')
 
   return (
     <div className={styles.wrapper}>
-      <TextArea label={"タイトル"} onChange={handleChangeTitle} />
-      <TextArea label={"本文"} onChange={handleChangeText} />
+      <TextArea label={'タイトル'} onChange={handleChangeTitle} />
+      <TextArea label={'本文'} onChange={handleChangeText} />
       <h2>翻訳タイトル:{translatedTitle}</h2>
       <h3>翻訳本文:{translatedText}</h3>
       <p>{loadingText}</p>
       <div className={styles.buttonArea}>
-        <TextButton onClick={handleTranslate}>翻訳</TextButton>
+        {/* <TextButton onClick={handleTranslate}>翻訳</TextButton>
         <TextButton onClick={handleAccept}>作成</TextButton>
-        <TextButton onClick={handleCancel}>キャンセル</TextButton>
+        <TextButton onClick={handleCancel}>キャンセル</TextButton> */}
       </div>
     </div>
-  );
-};
+  )
+}

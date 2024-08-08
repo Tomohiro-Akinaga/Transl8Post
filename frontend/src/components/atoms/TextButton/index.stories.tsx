@@ -17,17 +17,25 @@ type Story = StoryObj<typeof meta>
 export const Auth: Story = {
   args: {
     category: 'auth',
-    icon: '',
     onClick: () => {},
     children: '会員登録',
   },
 }
 
-export const Tab: Story = {
+/** 決定や翻訳などの処理ボタン */
+export const Process: Story = {
   args: {
-    category: 'tab',
-    icon: 'pen',
+    category: 'accept',
     onClick: () => {},
-    children: '投稿',
+    children: '決定',
+  },
+}
+
+/**　キャンセルボタン */
+export const Cancel: Story = {
+  args: {
+    category: 'cancel',
+    onClick: () => {},
+    children: 'キャンセル',
   },
 }

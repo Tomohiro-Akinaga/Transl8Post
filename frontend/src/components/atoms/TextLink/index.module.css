@@ -1,0 +1,16 @@
+.has-icon::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 20px;
+  aspect-ratio: 1;
+  mask-position: center;
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  background: #000;
+}
+
+.is-post::before {
+  mask-image: url('../../../../public/assets/icon/post.svg');
+  background-color: red;
+}
