@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import { TextButton } from "@/components/atoms/TextButton";
+import { title } from "process";
 
 type Blog = {
   id: string;
@@ -17,8 +18,16 @@ const BlogDetail = () => {
   const [blog, setBlog] = useState<Blog>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  const handleEdit = () => {
-    console.log("編集");
+  const handleEdit = async () => {
+    try {
+      const response = await fetch("/api/PUT", {
+        method: "PUT",
+        body: JSON.stringify({ id: id, title: title }),
+      });
+      console.log(response);
+    } catch (error) {
+      console.error("Error updating blog:", error);
+    }
   };
 
   const handleDelete = async () => {
@@ -41,7 +50,7 @@ const BlogDetail = () => {
         const data = response.find((v: Blog) => v.id === id);
         setBlog(data);
       } catch (error) {
-        console.error(error);
+        console.log(error);
       } finally {
         setIsLoading(false);
       }
@@ -52,8 +61,8 @@ const BlogDetail = () => {
   return (
     <div>
       {isLoading && <p>読み込み中...</p>}
-      <h2>{blog?.title}</h2>
-      <p>{blog?.text}</p>
+      <textarea defaultValue={blog?.title} />
+      <textarea defaultValue={blog?.text} />
       <h3>{blog?.translatedTitle}</h3>
       <p>{blog?.translatedText}</p>
       <TextButton onClick={handleEdit}>編集</TextButton>

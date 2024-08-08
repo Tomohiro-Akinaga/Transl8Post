@@ -2,9 +2,9 @@ import { NextRequest, NextResponse } from "next/server";
 import { client } from "../../../../libs/client";
 
 export async function DELETE(req: NextRequest) {
-  try {
-    const { id } = await req.json();
+  const { id } = await req.json();
 
+  try {
     const response = await client.delete({
       endpoint: "blog",
       contentId: id,
