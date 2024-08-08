@@ -1,0 +1,43 @@
+.button {
+  font-size: 14px;
+  height: 40px;
+  padding: 0 30px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.button.is-auth {
+  font-weight: 600;
+  color: #fff;
+  background-color: #4267cf;
+  border-radius: 50px;
+}
+
+.button.is-auth:hover {
+  background-color: rgb(127, 150, 207);
+}
+
+.button.is-tab {
+  background-color: #fff;
+}
+
+.is-pen::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 20px;
+  aspect-ratio: 1;
+  mask-image: url('../../../../public/assets/icon/post.svg');
+  mask-position: center;
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  background: #000;
+}
+
+.is-pen::before:hover {
+  background: #4267cf;
+}
