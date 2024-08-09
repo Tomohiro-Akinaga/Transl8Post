@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
+import styles from './index.module.css'
 import { useParams } from 'next/navigation'
 import { TextButton } from '@/components/atoms/TextButton'
 
@@ -92,14 +93,20 @@ const BlogDetail = () => {
   }, [])
 
   return (
-    <div>
+    <div className={styles.wrapper}>
       <p>{process}</p>
       <textarea defaultValue={blog?.title} onChange={handleChangeTitle} />
       <textarea defaultValue={blog?.text} onChange={handleChangeText} />
       <textarea defaultValue={blog?.translatedText} onChange={handleChangeTranslatedText} />
       <textarea defaultValue={blog?.translatedTitle} onChange={handleChangeTranslatedTitle} />
-      {/* <TextButton onClick={handleEdit}>更新</TextButton>
-      <TextButton onClick={handleDelete}>削除</TextButton> */}
+      <div className={styles.actionArea}>
+        <TextButton size={'small'} category={'accept'} onClick={handleEdit}>
+          更新
+        </TextButton>
+        <TextButton size={'small'} category={'cancel'} onClick={handleDelete}>
+          削除
+        </TextButton>
+      </div>
     </div>
   )
 }

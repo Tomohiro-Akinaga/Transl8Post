@@ -8,42 +8,37 @@
   display: flex;
   align-items: center;
   gap: 5px;
+  &.is-large {
+    height: 60px;
+  }
 }
 
 .button.is-auth {
   font-weight: 600;
   color: #fff;
-  background-color: #01bfbd;
+  background-color: #363427;
   border-radius: 5px;
 }
 
 .button.is-accept {
   height: 30px;
-  background-color: #01bfbd;
+  background-color: #363427;
   color: #fff;
   border-radius: 5px;
   padding: 0 20px;
   &:hover {
-    background-color: rgb(113, 187, 185);
+    background-color: #363427;
   }
 }
 
 .button.is-cancel {
   height: 30px;
   padding: 0 20px;
-  color: #01bfbd;
-  background-color: #fff;
-  border: solid 1px #01bfbd;
+  color: #fff;
+  background-color: #363427;
   border-radius: 5px;
 }
 
 .button.is-auth:hover {
-  background-color: rgb(113, 187, 185);
-}
-
-.button.is-cancel:hover {
-  color: rgb(113, 187, 185);
-  background-color: #fff;
-  border: solid 1px rgb(113, 187, 185);
-  border-radius: 5px;
+  background-color: #363427;
 }

@@ -73,19 +73,24 @@ export const Form = () => {
     }
   }
 
-  const handleCancel = () => router.push('/')
-
   return (
     <div className={styles.wrapper}>
-      <TextArea label={'タイトル'} onChange={handleChangeTitle} />
-      <TextArea label={'本文'} onChange={handleChangeText} />
-      <h2>翻訳タイトル:{translatedTitle}</h2>
-      <h3>翻訳本文:{translatedText}</h3>
-      <p>{loadingText}</p>
+      <div className={styles.inputArea}>
+        <TextArea size={'small'} placeholder={'タイトル'} onChange={handleChangeTitle} />
+        <TextArea size={'large'} placeholder={'本文'} onChange={handleChangeText} />
+      </div>
+      <TextButton size={'small'} category={'accept'} onClick={handleTranslate}>
+        翻訳
+      </TextButton>
+      <div className={styles.translationArea}>
+        <span>{loadingText}</span>
+        <TextArea size={'small'} placeholder={'翻訳タイトル'} value={translatedTitle} readOnly={true} />
+        <TextArea size={'large'} placeholder={'翻訳本文'} value={translatedText} readOnly={true} />
+      </div>
       <div className={styles.buttonArea}>
-        {/* <TextButton onClick={handleTranslate}>翻訳</TextButton>
-        <TextButton onClick={handleAccept}>作成</TextButton>
-        <TextButton onClick={handleCancel}>キャンセル</TextButton> */}
+        <TextButton size={'large'} category={'accept'} onClick={handleAccept}>
+          作成
+        </TextButton>
       </div>
     </div>
   )

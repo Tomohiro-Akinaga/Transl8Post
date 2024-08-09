@@ -11,10 +11,11 @@ const BlogItem = ({ blog }: Props) => {
 
   return (
     <Link href={`/${id}`} className={styles.item}>
-      <h2>{title}</h2>
-      <p>{text}</p>
-      <h2>{translatedTitle}</h2>
-      <p>{translatedText}</p>
+      <span className={styles.span}>{id}</span>
+      <h2 className={styles.title}>{title}</h2>
+      <p className={styles.text}>{text}</p>
+      <h3 className={[styles['title'], styles['small']].join(' ')}>{translatedTitle}</h3>
+      <p className={[styles['text'], styles['small']].join(' ')}>{translatedText}</p>
     </Link>
   )
 }

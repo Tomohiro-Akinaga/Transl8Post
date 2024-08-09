@@ -1,17 +1,18 @@
-import React from "react";
+import React, { ComponentPropsWithoutRef } from 'react'
+import styles from './index.module.css'
 
-interface Props {
-  label: string;
-  onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+interface Props extends ComponentPropsWithoutRef<'textarea'> {
+  size: 'small' | 'large'
 }
 
-export const TextArea = ({ label, onChange }: Props) => {
-  return (
-    <label>
-      {label}
-      <textarea onChange={onChange} />
-    </label>
-  );
-};
+export const TextArea = ({ size, placeholder, onChange, value, readOnly, children }: Props) => {
+  const classNames = [styles['textarea'], styles[`is-${size}`]].join(' ')
 
-export default TextArea;
+  return (
+    <textarea className={classNames} placeholder={placeholder} onChange={onChange} value={value} readOnly={readOnly}>
+      {children}
+    </textarea>
+  )
+}
+
+export default TextArea

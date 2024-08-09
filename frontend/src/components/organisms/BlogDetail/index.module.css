@@ -6,14 +6,7 @@
   gap: 20px;
 }
 
-.inputArea {
+.actionArea {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.translationArea {
-  display: flex;
-  flex-direction: column;
   gap: 10px;
 }

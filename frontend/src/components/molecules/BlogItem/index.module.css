@@ -1,5 +1,39 @@
 .item {
-  background-color: rgb(208, 208, 208);
-  width: 500px;
-  height: 150px;
+  background-color: #f1eceb;
+  width: 730px;
+  height: 230px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow: hidden;
+  white-space: 'normal';
+  text-overflow: ellipsis;
+}
+
+.span {
+  font-size: 14px;
+  font-family: sohne, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.title {
+  font-size: 24px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  &.small {
+    font-size: 20px;
+  }
+}
+
+.text {
+  font-size: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  &.small {
+    font-size: 12px;
+  }
 }
