@@ -20,14 +20,14 @@ export const BlogList = () => {
   }, [])
 
   return (
-    <>
+    <div className={styles.wrapper}>
       <p>{loadingText}</p>
       <ul className={styles.list}>
         {blogList.map((v) => (
           <BlogItem blog={v} key={v.id} />
         ))}
       </ul>
-    </>
+    </div>
   )
 }
 

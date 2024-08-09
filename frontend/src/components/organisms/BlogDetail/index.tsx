@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react'
 import styles from './index.module.css'
 import { useParams } from 'next/navigation'
 import { TextButton } from '@/components/atoms/TextButton'
+import { TextArea } from '@/components/atoms/TextArea'
 
 type Blog = {
   id: string
@@ -23,6 +24,7 @@ const BlogDetail = () => {
   const [text, setText] = useState<string>('')
   const [translatedTitle, setTranslatedTitle] = useState<string>('')
   const [translatedText, setTranslatedText] = useState<string>('')
+  const [isLoading, setIsLoading] = useState<boolean>(false)
   const [process, setProcess] = useState<string>('')
 
   const handleChangeTitle = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -76,29 +78,32 @@ const BlogDetail = () => {
   }
 
   useEffect(() => {
-    setProcess('取得中...')
     const fetchBlogs = async () => {
       try {
+        setIsLoading(true)
         const response = await fetch('http://localhost:3000/api/GET')
         const data = await response.json()
         const blog = data.find((v: Blog) => v.id === id)
         setBlog(blog)
+        setIsLoading(false)
       } catch (error) {
         console.log(error)
-      } finally {
-        setProcess('')
       }
     }
     fetchBlogs()
   }, [])
 
+  if (!blog) {
+    return <p className={styles.loading}>読み込み中...</p>
+  }
+
   return (
     <div className={styles.wrapper}>
-      <p>{process}</p>
-      <textarea defaultValue={blog?.title} onChange={handleChangeTitle} />
-      <textarea defaultValue={blog?.text} onChange={handleChangeText} />
-      <textarea defaultValue={blog?.translatedText} onChange={handleChangeTranslatedText} />
-      <textarea defaultValue={blog?.translatedTitle} onChange={handleChangeTranslatedTitle} />
+      <TextArea defaultValue={blog.title} onChange={handleChangeTitle} size={'small'} />
+      <TextArea defaultValue={blog.text} onChange={handleChangeText} size={'large'} />
+      <TextArea defaultValue={blog.translatedTitle} onChange={handleChangeTranslatedTitle} size={'small'} />
+      <TextArea defaultValue={blog.translatedText} onChange={handleChangeTranslatedText} size={'large'} />
+      <span>{process}</span>
       <div className={styles.actionArea}>
         <TextButton size={'small'} category={'accept'} onClick={handleEdit}>
           更新

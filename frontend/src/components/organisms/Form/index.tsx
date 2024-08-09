@@ -1,15 +1,12 @@
 'use client'
 
 import React, { useState } from 'react'
-import { useRouter } from 'next/navigation'
 import styles from './index.module.css'
 import { TextButton } from '@/components/atoms/TextButton'
 import { TextArea } from '@/components/atoms/TextArea'
 import Validation from '@/helpers/validation'
 
 export const Form = () => {
-  const router = useRouter()
-
   // 日本語タイトルと本文
   const [title, setTitle] = useState<string>('')
   const [text, setText] = useState<string>('')
@@ -84,8 +81,8 @@ export const Form = () => {
       </TextButton>
       <div className={styles.translationArea}>
         <span>{loadingText}</span>
-        <TextArea size={'small'} placeholder={'翻訳タイトル'} value={translatedTitle} readOnly={true} />
-        <TextArea size={'large'} placeholder={'翻訳本文'} value={translatedText} readOnly={true} />
+        <TextArea size={'small'} placeholder={'翻訳タイトル'} defaultValue={translatedTitle} readOnly={true} />
+        <TextArea size={'large'} placeholder={'翻訳本文'} defaultValue={translatedText} readOnly={true} />
       </div>
       <div className={styles.buttonArea}>
         <TextButton size={'large'} category={'accept'} onClick={handleAccept}>
