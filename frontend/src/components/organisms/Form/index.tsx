@@ -37,8 +37,9 @@ export const Form = () => {
         target_lang: 'EN',
       }),
     })
-
     const data = await response.json()
+    console.log(data)
+
     /*
      ** TODO: インデックス以外での取得を検討
      */

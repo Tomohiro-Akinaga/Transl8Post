@@ -1,9 +1,20 @@
 import React from 'react'
 import Link from 'next/link'
 import styles from './index.module.css'
+import { BlogItemType } from '@/components/organisms/BlogList/index'
+
+// type Blog = {
+//   id: string
+//   title: string
+//   text: string
+//   translatedTitle: string
+//   translatedText: string
+// }
+
+//　BlogItemTypeはBlogResponseTypeと別に作る
 
 interface Props {
-  blog: Blog
+  blog: BlogItemType
 }
 
 const BlogItem = ({ blog }: Props) => {

@@ -4,8 +4,16 @@ import React, { useEffect, useState } from 'react'
 import styles from './index.module.css'
 import BlogItem from '@/components/molecules/BlogItem'
 
+export type BlogItemType = {
+  id: string
+  title: string
+  text: string
+  translatedTitle: string
+  translatedText: string
+}
+
 export const BlogList = () => {
-  const [blogList, setBlogList] = useState<Blog[]>([])
+  const [blogList, setBlogList] = useState<BlogItemType[]>([])
   const [loadingText, setLoadingText] = useState<string>('')
 
   // ブログ一覧取得
