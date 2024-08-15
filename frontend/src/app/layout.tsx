@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { Noto_Sans_JP } from 'next/font/google'
 import './globals.css'
-import { ClerkProvider, SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
 
 import Header from '@/components/organisms/Header'
 
@@ -18,19 +17,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <ClerkProvider>
-      <html lang='jp'>
-        <body className={notoSansJP.className}>
-          <Header />
-          <SignedOut>
-            <SignInButton />
-          </SignedOut>
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
-          {children}
-        </body>
-      </html>
-    </ClerkProvider>
+    <html lang='jp'>
+      <body className={notoSansJP.className}>
+        <Header />
+        {children}
+      </body>
+    </html>
   )
 }
