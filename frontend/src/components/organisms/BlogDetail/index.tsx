@@ -91,7 +91,7 @@ const BlogDetail = () => {
       }
     }
     fetchBlogs()
-  }, [])
+  }, [id])
 
   if (!blog) {
     return <p className={styles.loading}>読み込み中...</p>
