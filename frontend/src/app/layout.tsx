@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter, Noto_Sans_JP } from 'next/font/google'
 import './globals.css'
-import { UserProvider } from '@auth0/nextjs-auth0/client'
+
 import Header from '@/components/organisms/Header'
 
 const notoSansJP = Noto_Sans_JP({ subsets: ['latin'] })
@@ -18,12 +18,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <UserProvider>
-        <body className={notoSansJP.className}>
-          <Header />
-          {children}
-        </body>
-      </UserProvider>
+      <body className={notoSansJP.className}>
+        <Header />
+        {children}
+      </body>
     </html>
   )
 }

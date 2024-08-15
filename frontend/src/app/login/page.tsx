@@ -1,7 +1,12 @@
 import React from 'react'
 
 const LogIn = () => {
-  return <div>ログインしてください</div>
+  return (
+    <div>
+      ログインしてください
+      <button>GitHubでログイン</button>
+    </div>
+  )
 }
 
 export default LogIn
