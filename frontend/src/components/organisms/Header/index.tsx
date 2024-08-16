@@ -30,6 +30,20 @@ export const Header = async () => {
     },
   ]
 
+  const HomeLink = () => {
+    if (!session) return
+    return <TextLink href='/'>ホーム</TextLink>
+  }
+
+  const PostLink = () => {
+    if (!session) return
+    return (
+      <TextLink href='/edit' icon={'pen'}>
+        投稿
+      </TextLink>
+    )
+  }
+
   const AuthLink = () => {
     if (session)
       return (
@@ -47,10 +61,8 @@ export const Header = async () => {
     <header className={styles.header}>
       <SiteLogo />
       <div className={styles.inner}>
-        <TextLink href='/'>ホーム</TextLink>
-        <TextLink href='/edit' icon={'pen'}>
-          投稿
-        </TextLink>
+        <HomeLink />
+        <PostLink />
         <AuthLink />
       </div>
     </header>
