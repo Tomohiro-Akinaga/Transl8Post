@@ -22,3 +22,15 @@
   mask-image: url('../../../../public/assets/icon/pen.svg');
   background-color: #fff;
 }
+
+.is-profile {
+  color: #363427;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 5px 0;
+}
+
+.link.is-profile:hover {
+  background: #ececec;
+}

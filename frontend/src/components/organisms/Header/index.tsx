@@ -3,17 +3,46 @@ import styles from './index.module.css'
 import TextLink from '@/components/atoms/TextLink'
 import SiteLogo from '@/components/atoms/SiteLogo'
 import { getSession } from '@auth0/nextjs-auth0'
+import PullDownMenu from '@/components/molecules/PullDownMenu'
 
 export const Header = async () => {
+  // ログインしているユーザー情報を取得
   const session = await getSession()
-  const userId = session ? session.user.sub : ''
+  const user = session?.user
+
+  // プロフィールメニューに表示するリンク
+  const profileMenu = [
+    {
+      label: '記事の管理',
+      href: '',
+    },
+    {
+      label: 'イイネした記事',
+      href: '',
+    },
+    {
+      label: 'アカウント設定',
+      href: '',
+    },
+    {
+      label: 'ログアウト',
+      href: '/api/auth/logout',
+    },
+  ]
 
   const AuthLink = () => {
-    const text = userId ? 'ログアウト' : 'ログイン'
-    const href = userId ? '/api/auth/logout' : '/api/auth/login'
-
-    return <TextLink href={href}>{text}</TextLink>
+    if (session)
+      return (
+        <PullDownMenu
+          category={'profile'}
+          userEmail={user?.email}
+          iconURL={user?.picture}
+          menu={profileMenu}
+        ></PullDownMenu>
+      )
+    return <TextLink href='/api/auth/login'>ログイン</TextLink>
   }
+
   return (
     <header className={styles.header}>
       <SiteLogo />
