@@ -1,7 +1,8 @@
 import React from 'react'
+import LoginPage from '@/components/pages/LoginPage'
 
 const LogIn = () => {
-  return <div>ログインしてください</div>
+  return <LoginPage />
 }
 
 export default LogIn
