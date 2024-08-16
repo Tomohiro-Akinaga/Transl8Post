@@ -11,6 +11,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@auth0/nextjs-auth0": "^3.5.0",
     "deepl-node": "^1.13.0",
     "microcms-js-sdk": "^3.1.2",
     "next": "14.2.5",
