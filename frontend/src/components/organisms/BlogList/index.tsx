@@ -3,7 +3,7 @@
 import React, { useEffect, useState, useContext } from 'react'
 import styles from './index.module.css'
 import BlogItem from '@/components/molecules/BlogItem'
-import { UserContext } from '@/context/UserContextProvider'
+import { UserContext, UserContextType } from '@/context/UserContextProvider'
 
 export type BlogItemType = {
   id: string
@@ -17,7 +17,8 @@ export const BlogList = () => {
   const [blogList, setBlogList] = useState<BlogItemType[]>([])
   const [loadingText, setLoadingText] = useState<string>('')
 
-  const user = useContext(UserContext)
+  const user = useContext<UserContextType | null>(UserContext)
+  const userId = user?.sub.replace('auth0|', '')
 
   // ブログ一覧取得
   useEffect(() => {
