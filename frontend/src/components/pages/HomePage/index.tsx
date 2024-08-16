@@ -1,8 +1,17 @@
-import React from "react";
-import { HomeTemplate } from "../../templates/HomeTemplate";
+import React from 'react'
+import { HomeTemplate } from '../../templates/HomeTemplate'
+import { getSession } from '@auth0/nextjs-auth0'
+import { UserProvider } from '../../../context/UserContextProvider'
 
-export const HomePage = () => {
-  return <HomeTemplate />;
-};
+export const HomePage = async () => {
+  const session = await getSession()
+  const user = session?.user
 
-export default HomePage;
+  return (
+    <UserProvider value={user}>
+      <HomeTemplate />
+    </UserProvider>
+  )
+}
+
+export default HomePage

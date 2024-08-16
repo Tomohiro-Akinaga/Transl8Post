@@ -1,8 +1,9 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import styles from './index.module.css'
 import BlogItem from '@/components/molecules/BlogItem'
+import { UserContext } from '@/context/UserContextProvider'
 
 export type BlogItemType = {
   id: string
@@ -15,6 +16,8 @@ export type BlogItemType = {
 export const BlogList = () => {
   const [blogList, setBlogList] = useState<BlogItemType[]>([])
   const [loadingText, setLoadingText] = useState<string>('')
+
+  const user = useContext(UserContext)
 
   // ブログ一覧取得
   useEffect(() => {
