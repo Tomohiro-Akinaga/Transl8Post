@@ -18,13 +18,14 @@ export const BlogList = () => {
   const [loadingText, setLoadingText] = useState<string>('')
 
   const user = useContext<UserContextType | null>(UserContext)
-  const userId = user?.sub.replace('auth0|', '')
+  const userId = user?.sub
 
   // ブログ一覧取得
   useEffect(() => {
     setLoadingText('読み込み中...')
     const fetchBlogList = async () => {
       const response = await fetch('api/GET').then((res) => res.json())
+      console.log(response)
       setBlogList(response)
       setLoadingText('')
     }
