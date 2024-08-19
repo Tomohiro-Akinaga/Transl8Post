@@ -1,10 +1,11 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import styles from './index.module.css'
 import { TextButton } from '@/components/atoms/TextButton'
 import { TextArea } from '@/components/atoms/TextArea'
 import Validation from '@/helpers/validation'
+import { UserContext, UserContextType } from '@/context/UserContextProvider'
 
 export const Form = () => {
   // 日本語タイトルと本文
@@ -17,6 +18,10 @@ export const Form = () => {
 
   // ローディング中テキスト
   const [loadingText, setLoadingText] = useState<string>('')
+
+  //ユーザーContext
+  const user = useContext<UserContextType | null>(UserContext)
+  const userId = user?.sub
 
   const handleChangeTitle = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setTitle(e.target.value)
@@ -38,7 +43,6 @@ export const Form = () => {
       }),
     })
     const data = await response.json()
-    console.log(data)
 
     /*
      ** TODO: インデックス以外での取得を検討
@@ -55,9 +59,13 @@ export const Form = () => {
     try {
       setLoadingText('作成中...')
 
+      /*
+       ** TODO: ユーザーIDはDBを用意して取得するように変更
+       */
       const response = await fetch('/api/POST', {
         method: 'POST',
         body: JSON.stringify({
+          userId: userId,
           title: title,
           text: text,
           translatedTitle: translatedTitle,
