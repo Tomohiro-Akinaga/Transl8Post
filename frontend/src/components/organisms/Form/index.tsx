@@ -81,23 +81,8 @@ export const Form = () => {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.inputArea}>
-        <TextArea size={'small'} placeholder={'タイトル'} onChange={handleChangeTitle} />
-        <TextArea size={'large'} placeholder={'本文'} onChange={handleChangeText} />
-      </div>
-      <TextButton size={'small'} category={'accept'} onClick={handleTranslate}>
-        翻訳
-      </TextButton>
-      <div className={styles.translationArea}>
-        <span>{loadingText}</span>
-        <TextArea size={'small'} placeholder={'翻訳タイトル'} defaultValue={translatedTitle} readOnly={true} />
-        <TextArea size={'large'} placeholder={'翻訳本文'} defaultValue={translatedText} readOnly={true} />
-      </div>
-      <div className={styles.buttonArea}>
-        <TextButton size={'large'} category={'accept'} onClick={handleAccept}>
-          作成
-        </TextButton>
-      </div>
+      <TextArea size='small' placeholder='タイトル'></TextArea>
+      <TextArea size='large' placeholder='本文'></TextArea>
     </div>
   )
 }

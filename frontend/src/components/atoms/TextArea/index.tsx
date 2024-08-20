@@ -5,17 +5,11 @@ interface Props extends ComponentPropsWithoutRef<'textarea'> {
   size: 'small' | 'large'
 }
 
-export const TextArea = ({ size, placeholder, onChange, defaultValue, readOnly, children }: Props) => {
+export const TextArea = ({ size, placeholder, onChange, children }: Props) => {
   const classNames = [styles['textarea'], styles[`is-${size}`]].join(' ')
 
   return (
-    <textarea
-      className={classNames}
-      placeholder={placeholder}
-      onChange={onChange}
-      defaultValue={defaultValue}
-      readOnly={readOnly}
-    >
+    <textarea className={classNames} placeholder={placeholder} onChange={onChange}>
       {children}
     </textarea>
   )
