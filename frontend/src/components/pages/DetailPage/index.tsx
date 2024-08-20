@@ -1,8 +1,8 @@
-import React from "react";
-import DetailTemplate from "@/components/templates/DetailTemplate";
+import React from 'react'
+import DetailTemplate from '@/components/templates/DetailTemplate'
 
 const DetailPage = () => {
-  return <DetailTemplate />;
-};
+  return <DetailTemplate />
+}
 
-export default DetailPage;
+export default DetailPage

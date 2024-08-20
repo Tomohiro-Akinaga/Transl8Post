@@ -1,0 +1,16 @@
+.loading {
+  padding: 60px;
+}
+
+.wrapper {
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.actionArea {
+  display: flex;
+  gap: 10px;
+}

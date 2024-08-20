@@ -2,13 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import styles from './index.module.css'
 import { BlogItemType } from '@/components/organisms/BlogList/index'
-import parse from 'html-react-parser'
-
-import Card from '@mui/material/Card'
-import CardContent from '@mui/material/CardContent'
-import CardMedia from '@mui/material/CardMedia'
-import Typography from '@mui/material/Typography'
-import { Button, CardActionArea, CardActions } from '@mui/material'
+import { TextButton } from '@/components/atoms/TextButton'
 
 interface Props {
   blog: BlogItemType
@@ -18,7 +12,7 @@ const BlogItem = ({ blog }: Props) => {
   const { id, title, text, price, media, userName } = blog
 
   return (
-    <Link href={`/${id}`} className={styles.item}>
+    <Link href={`/blogs/${id}`} className={styles.item}>
       <img src={media.url} alt='記事画像' />
       <div className={styles.inner}>
         <h2 className={styles.title}>{title}</h2>
@@ -29,7 +23,9 @@ const BlogItem = ({ blog }: Props) => {
             __html: `${text}`,
           }}
         ></div>
-        <span className={styles.name}>{userName}</span>
+        <TextButton category='accept' size='small'>
+          購入
+        </TextButton>
       </div>
     </Link>
   )
