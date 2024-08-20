@@ -44,7 +44,6 @@
   width: 100%;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 5;
   overflow: hidden;
   height: 80px;
 }
@@ -52,11 +51,15 @@
 .text > * {
   background: #fff;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 5;
 }
 
 .price {
   background: #fff;
   font-size: 0.75rem;
   color: #238f76;
+}
+
+.name {
+  color: var(--color-secondary);
+  font-size: 0.75rem;
 }

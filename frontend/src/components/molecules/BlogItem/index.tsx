@@ -15,7 +15,7 @@ interface Props {
 }
 
 const BlogItem = ({ blog }: Props) => {
-  const { id, title, text, price, media } = blog
+  const { id, title, text, price, media, userName } = blog
 
   return (
     <Link href={`/${id}`} className={styles.item}>
@@ -23,7 +23,13 @@ const BlogItem = ({ blog }: Props) => {
       <div className={styles.inner}>
         <h2 className={styles.title}>{title}</h2>
         <span className={styles.price}>￥{price}</span>
-        <p className={styles.text}>{parse(text)}</p>
+        <div
+          className={styles.text}
+          dangerouslySetInnerHTML={{
+            __html: `${text}`,
+          }}
+        ></div>
+        <span className={styles.name}>{userName}</span>
       </div>
     </Link>
   )

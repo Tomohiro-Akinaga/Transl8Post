@@ -10,6 +10,7 @@ export type BlogItemType = {
   title: string
   text: string
   price: string
+  userName: string
   media: {
     url: string
   }

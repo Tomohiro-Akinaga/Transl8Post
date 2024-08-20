@@ -11,6 +11,7 @@
 /* CSS変数 */
 :root {
   --color-primary: #595959;
+  --color-secondary: #777777;
   --color-background: #f1f6f8;
   --color-button-primary: #238f76;
   --color-border-primary: #dbdada;
