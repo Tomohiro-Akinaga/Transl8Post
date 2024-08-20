@@ -1,11 +1,11 @@
-import { NextRequest, NextResponse } from "next/server";
-import { client } from "../../../../libs/client";
+import { NextRequest, NextResponse } from 'next/server'
+import { client } from '../../../libs/client'
 
 export async function PUT(req: NextRequest) {
-  const { id, title, text, translatedTitle, translatedText } = await req.json();
+  const { id, title, text, translatedTitle, translatedText } = await req.json()
 
   const response = await client.update({
-    endpoint: "blog",
+    endpoint: 'blog',
     contentId: id,
     content: {
       title: title,
@@ -13,7 +13,7 @@ export async function PUT(req: NextRequest) {
       translatedTitle: translatedTitle,
       translatedText: translatedText,
     },
-  });
+  })
 
-  return NextResponse.json(response);
+  return NextResponse.json(response)
 }

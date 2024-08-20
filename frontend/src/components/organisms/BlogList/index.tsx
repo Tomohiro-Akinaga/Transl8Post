@@ -25,7 +25,6 @@ export const BlogList = () => {
     setLoadingText('読み込み中...')
     const fetchBlogList = async () => {
       const response = await fetch('api/GET').then((res) => res.json())
-      console.log(response)
       setBlogList(response)
       setLoadingText('')
     }

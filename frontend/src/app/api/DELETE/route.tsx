@@ -1,17 +1,17 @@
-import { NextRequest, NextResponse } from "next/server";
-import { client } from "../../../../libs/client";
+import { NextRequest, NextResponse } from 'next/server'
+import { client } from '../../../libs/client'
 
 export async function DELETE(req: NextRequest) {
-  const { id } = await req.json();
+  const { id } = await req.json()
 
   try {
     const response = await client.delete({
-      endpoint: "blog",
+      endpoint: 'blog',
       contentId: id,
-    });
+    })
 
-    return NextResponse.json({ status: "200", response: response });
+    return NextResponse.json({ status: '200', response: response })
   } catch (error) {
-    console.error("Error deleting blog:", error);
+    console.error('Error deleting blog:', error)
   }
 }
