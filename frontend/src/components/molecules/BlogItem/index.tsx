@@ -2,31 +2,29 @@ import React from 'react'
 import Link from 'next/link'
 import styles from './index.module.css'
 import { BlogItemType } from '@/components/organisms/BlogList/index'
+import parse from 'html-react-parser'
 
-// type Blog = {
-//   id: string
-//   title: string
-//   text: string
-//   translatedTitle: string
-//   translatedText: string
-// }
-
-//　BlogItemTypeはBlogResponseTypeと別に作る
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
+import CardMedia from '@mui/material/CardMedia'
+import Typography from '@mui/material/Typography'
+import { Button, CardActionArea, CardActions } from '@mui/material'
 
 interface Props {
   blog: BlogItemType
 }
 
 const BlogItem = ({ blog }: Props) => {
-  const { id, title, text, translatedTitle, translatedText } = blog
+  const { id, title, text, price, media } = blog
 
   return (
     <Link href={`/${id}`} className={styles.item}>
-      <span className={styles.span}>{id}</span>
-      <h2 className={styles.title}>{title}</h2>
-      <p className={styles.text}>{text}</p>
-      <h3 className={[styles['title'], styles['small']].join(' ')}>{translatedTitle}</h3>
-      <p className={[styles['text'], styles['small']].join(' ')}>{translatedText}</p>
+      <img src={media.url} alt='記事画像' />
+      <div className={styles.inner}>
+        <h2 className={styles.title}>{title}</h2>
+        <span className={styles.price}>￥{price}</span>
+        <p className={styles.text}>{parse(text)}</p>
+      </div>
     </Link>
   )
 }

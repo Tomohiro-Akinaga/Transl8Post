@@ -9,8 +9,10 @@ export type BlogItemType = {
   id: string
   title: string
   text: string
-  translatedTitle: string
-  translatedText: string
+  price: string
+  media: {
+    url: string
+  }
 }
 
 export const BlogList = () => {
