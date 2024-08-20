@@ -38,7 +38,7 @@ export const Header = async () => {
   const PostLink = () => {
     if (!session) return
     return (
-      <TextLink href='/edit' icon={'pen'}>
+      <TextLink href='/post' icon={'pen'}>
         投稿
       </TextLink>
     )
