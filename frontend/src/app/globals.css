@@ -6,4 +6,14 @@
   color: #363427;
   resize: none;
   outline: none;
+  background: var(--color-background);
+}
+
+/* CSS変数 */
+:root {
+  --color-primary: #595959;
+  --color-background: #f1f6f8;
+  --color-button-primary: #238f76;
+  --color-border-primary: #dbdada;
+  --font-primary: 'Helvetica Neue';
 }

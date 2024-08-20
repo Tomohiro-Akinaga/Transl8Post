@@ -22,7 +22,7 @@
 
 .button.is-accept {
   height: 30px;
-  background-color: #363427;
+  background-color: var(--color-green);
   color: #fff;
   border-radius: 5px;
   padding: 0 20px;

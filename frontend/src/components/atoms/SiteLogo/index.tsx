@@ -5,7 +5,7 @@ import styles from './index.module.css'
 const SiteLogo = () => {
   return (
     <Link className={styles.link} href={'/'}>
-      Transl8Post
+      TLANSL8POST
     </Link>
   )
 }

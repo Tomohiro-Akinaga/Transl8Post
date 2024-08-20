@@ -1,7 +1,8 @@
 .link {
-  color: #fff;
+  color: var(--color-primary);
   text-decoration: none;
   font-size: 30px;
   font-weight: 600;
-  font-family: 'Clarkson', Helvetica, sans-serif;
+  font-family: var(--font-primary);
+  background-color: #fff;
 }
