@@ -22,7 +22,7 @@
 
 .button.is-accept {
   height: 30px;
-  width: 100px;
+  width: 120px;
   background-color: var(--color-primary);
   color: #fff;
   border-radius: 5px;
@@ -33,12 +33,10 @@
 
 .button.is-cancel {
   height: 30px;
+  width: 120px;
+  background-color: #fff;
+  border: 1px solid var(--color-primary);
   padding: 0 20px;
-  color: #fff;
-  background-color: #363427;
+  color: var(--color-primary);
   border-radius: 5px;
-}
-
-.button.is-auth:hover {
-  background-color: #363427;
 }

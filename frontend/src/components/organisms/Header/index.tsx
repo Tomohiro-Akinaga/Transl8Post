@@ -13,11 +13,11 @@ export const Header = async () => {
   // プロフィールメニューに表示するリンク
   const profileMenu = [
     {
-      label: '記事の管理',
+      label: '投稿記事の管理',
       href: '',
     },
     {
-      label: 'イイネした記事',
+      label: '購入した記事',
       href: '',
     },
     {

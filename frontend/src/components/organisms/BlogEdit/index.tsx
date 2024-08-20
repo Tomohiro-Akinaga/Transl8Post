@@ -84,8 +84,8 @@ const BlogDetail = () => {
       const response = await fetch('/api/checkout', {
         method: 'POST',
         body: JSON.stringify({
-          title: 'Next.js入門',
-          price: 123,
+          id: '2_bfq37m94',
+          price: 980,
         }),
       })
 
