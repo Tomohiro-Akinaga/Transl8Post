@@ -5,6 +5,7 @@ import styles from './index.module.css'
 import { useParams } from 'next/navigation'
 import { TextButton } from '@/components/atoms/TextButton'
 import { TextArea } from '@/components/atoms/TextArea'
+import { useRouter } from 'next/navigation'
 
 type Blog = {
   id: string
@@ -26,6 +27,7 @@ const BlogDetail = () => {
   const [translatedText, setTranslatedText] = useState<string>('')
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [process, setProcess] = useState<string>('')
+  const router = useRouter()
 
   const handleChangeTitle = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setTitle(e.target.value)
@@ -77,6 +79,23 @@ const BlogDetail = () => {
     }
   }
 
+  const handleBuy = async () => {
+    try {
+      const response = await fetch('/api/checkout', {
+        method: 'POST',
+        body: JSON.stringify({
+          title: 'Next.js入門',
+          price: 123,
+        }),
+      })
+
+      const data = await response.json()
+      router.push(data.checkout_url)
+    } catch (error) {
+      console.error('Error buying blog:', error)
+    }
+  }
+
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
@@ -110,6 +129,9 @@ const BlogDetail = () => {
         </TextButton>
         <TextButton size={'small'} category={'cancel'} onClick={handleDelete}>
           削除
+        </TextButton>
+        <TextButton size={'small'} category={'accept'} onClick={handleBuy}>
+          購入
         </TextButton>
       </div>
     </div>
