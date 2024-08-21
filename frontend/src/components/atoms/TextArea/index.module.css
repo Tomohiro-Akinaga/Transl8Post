@@ -1,5 +1,5 @@
 .textarea {
-  width: 700px;
+  width: 100%;
   border: none;
   color: var(--color-primary);
   border-left: 2px solid var(--color-border-primary);
@@ -13,5 +13,6 @@
 
 .textarea.is-small::placeholder {
   font-size: 2rem;
+  font-weight: 800;
   vertical-align: center;
 }

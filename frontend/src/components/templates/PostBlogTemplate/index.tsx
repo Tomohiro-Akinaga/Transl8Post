@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './index.module.css'
 import { Form } from '@/components/organisms/Form'
+import { TextButton } from '@/components/atoms/TextButton'
 
 export const PostBlogTemplate = () => {
   return (
