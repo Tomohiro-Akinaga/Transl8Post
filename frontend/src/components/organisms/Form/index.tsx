@@ -14,9 +14,8 @@ export const Form = () => {
   const [title, setTitle] = useState<string>('')
   const [text, setText] = useState<string>('')
   const [price, setPrice] = useState<string>('')
-  const [url, setUrl] = useState<string>()
+  const [file, setFile] = useState<File>()
   const [loadingText, setLoadingText] = useState<string>('')
-  const ref = React.createRef<HTMLInputElement>()
 
   const user = useContext<UserContextType | null>(UserContext)
   const userId = user?.sub
@@ -58,27 +57,29 @@ export const Form = () => {
   // }
 
   const handleAccept = async () => {
-    const response = await fetch('/api/media', {
-      method: 'POST',
-      body: JSON.stringify({
-        url: url,
-      }),
-    })
+    if (!file) return
 
-    const result = await response.json()
-    console.log(result)
+    const reader = new FileReader()
+
+    reader.readAsDataURL(file)
+
+    reader.onload = async () => {
+      const fileURL = reader.result
+
+      await fetch('/api/media', {
+        method: 'POST',
+        body: JSON.stringify({
+          fileURL: fileURL,
+          fileName: file.name,
+        }),
+      })
+    }
   }
 
   const handleChangeMedia = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) return
     const file = e.target.files[0]
-
-    const reader = new FileReader()
-    reader.readAsDataURL(file)
-    reader.onload = () => {
-      const dataUrl = reader.result
-      setUrl(dataUrl as string)
-    }
+    setFile(file)
   }
 
   return (
