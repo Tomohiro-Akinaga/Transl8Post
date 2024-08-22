@@ -13,7 +13,6 @@ const InputArea = ({ children, type, label, inputValue, setInputValue }: PropsWi
   const ref = useRef<HTMLInputElement>(null)
 
   const handleChange = () => setInputValue(ref.current?.value!)
-
   return (
     <label className={styles.label}>
       {label}
