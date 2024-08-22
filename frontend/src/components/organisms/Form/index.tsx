@@ -29,34 +29,9 @@ export const Form = () => {
   }
 
   // 記事作成処理
-  // const handleAccept = async () => {
-  //   await Validation([title, text, price])
-
-  //   try {
-  //     setLoadingText('作成中...')
-
-  //     /*
-  //      ** TODO: ユーザーIDはDBを用意して取得するように変更
-  //      */
-  //     const response = await fetch('/api/POST', {
-  //       method: 'POST',
-  //       body: JSON.stringify({
-  //         userId: userId,
-  //         title: title,
-  //         text: text,
-  //         price: price,
-  //         image: image,
-  //       }),
-  //     })
-
-  //     console.log(response)
-  //     response && setLoadingText('作成しました')
-  //   } catch (error) {
-  //     setLoadingText('作成に失敗しました')
-  //   }
-  // }
-
   const handleAccept = async () => {
+    await Validation([title, text, price])
+
     if (!file) return
 
     const reader = new FileReader()
@@ -66,15 +41,48 @@ export const Form = () => {
     reader.onload = async () => {
       const fileURL = reader.result
 
-      await fetch('/api/media', {
-        method: 'POST',
-        body: JSON.stringify({
-          fileURL: fileURL,
-          fileName: file.name,
-        }),
-      })
+      try {
+        setLoadingText('作成中...')
+
+        const response = await fetch('/api/POST', {
+          method: 'POST',
+          body: JSON.stringify({
+            userId: userId,
+            title: title,
+            text: text,
+            price: price,
+            fileURL: fileURL,
+            fileName: file.name,
+          }),
+        })
+
+        console.log(response)
+        response && setLoadingText('作成しました')
+      } catch (error) {
+        setLoadingText('作成に失敗しました')
+      }
     }
   }
+
+  // const handleAccept = async () => {
+  //   if (!file) return
+
+  //   const reader = new FileReader()
+
+  //   reader.readAsDataURL(file)
+
+  //   reader.onload = async () => {
+  //     const fileURL = reader.result
+
+  //     await fetch('/api/media', {
+  //       method: 'POST',
+  //       body: JSON.stringify({
+  //         fileURL: fileURL,
+  //         fileName: file.name,
+  //       }),
+  //     })
+  //   }
+  // }
 
   const handleChangeMedia = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) return
