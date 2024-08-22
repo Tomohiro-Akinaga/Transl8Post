@@ -14,7 +14,7 @@ export const Header = async () => {
   const profileMenu = [
     {
       label: '投稿記事の管理',
-      href: '',
+      href: '/edit',
     },
     {
       label: '購入した記事',

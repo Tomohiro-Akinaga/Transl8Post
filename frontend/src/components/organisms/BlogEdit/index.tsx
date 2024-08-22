@@ -23,8 +23,6 @@ const BlogDetail = () => {
   const [blog, setBlog] = useState<Blog>()
   const [title, setTitle] = useState<string>('')
   const [text, setText] = useState<string>('')
-  const [translatedTitle, setTranslatedTitle] = useState<string>('')
-  const [translatedText, setTranslatedText] = useState<string>('')
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [process, setProcess] = useState<string>('')
   const router = useRouter()
@@ -37,14 +35,6 @@ const BlogDetail = () => {
     setText(e.target.value)
   }
 
-  const handleChangeTranslatedTitle = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setTranslatedTitle(e.target.value)
-  }
-
-  const handleChangeTranslatedText = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setTranslatedText(e.target.value)
-  }
-
   const handleEdit = async () => {
     setProcess('更新中...')
     try {
@@ -54,8 +44,6 @@ const BlogDetail = () => {
           id: id,
           title: title,
           text: text,
-          translatedTitle: translatedTitle,
-          translatedText: translatedText,
         }),
       })
       setProcess('更新しました')
@@ -120,8 +108,6 @@ const BlogDetail = () => {
     <div className={styles.wrapper}>
       <TextArea defaultValue={blog.title} onChange={handleChangeTitle} size={'small'} />
       <TextArea defaultValue={blog.text} onChange={handleChangeText} size={'large'} />
-      <TextArea defaultValue={blog.translatedTitle} onChange={handleChangeTranslatedTitle} size={'small'} />
-      <TextArea defaultValue={blog.translatedText} onChange={handleChangeTranslatedText} size={'large'} />
       <span>{process}</span>
       <div className={styles.actionArea}>
         <TextButton size={'small'} category={'accept'} onClick={handleEdit}>
