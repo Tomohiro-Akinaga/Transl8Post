@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { readFileSync } from 'fs'
 import { managementClient } from '../../../libs/client'
+import { client } from '../../../libs/client'
 
 export async function POST(req: NextRequest, res: NextResponse) {
   const { url } = await req.json()
@@ -10,5 +11,14 @@ export async function POST(req: NextRequest, res: NextResponse) {
     name: 'image.png',
   })
 
-  return NextResponse.json(response)
+  const fileURL = response.url
+
+  const fileResponse = await client.create({
+    endpoint: 'media',
+    content: {
+      media: fileURL,
+    },
+  })
+
+  return NextResponse.json(fileResponse)
 }
