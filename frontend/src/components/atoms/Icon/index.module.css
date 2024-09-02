@@ -1,0 +1,14 @@
+.has-icon {
+  display: block;
+  content: '';
+  height: 100px;
+  width: 100px;
+}
+
+.is-loading {
+  mask-image: url('../../../../public/assets/icon/loading.svg');
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  background-color: var(--color-primary);
+}

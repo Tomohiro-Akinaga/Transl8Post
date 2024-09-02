@@ -6,6 +6,7 @@ import BlogItem from '@/components/molecules/BlogItem'
 import { UserContext, UserContextType } from '@/context/UserContextProvider'
 import Modal from '@/components/molecules/Modal'
 import { useRouter } from 'next/navigation'
+import Icon from '@/components/atoms/Icon'
 
 export type BlogItemType = {
   id: string
@@ -20,21 +21,20 @@ export type BlogItemType = {
 
 export const BlogList = () => {
   const [blogList, setBlogList] = useState<BlogItemType[]>([])
-  const [loadingText, setLoadingText] = useState<string>('')
+  const [isLoading, setIsLoading] = useState<boolean>(false)
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
   const [choosedBlog, setChoosedBlog] = useState<BlogItemType | null>(null)
   const router = useRouter()
 
   const user = useContext<UserContextType | null>(UserContext)
-  const userId = user?.sub
 
   // ブログ一覧取得
   useEffect(() => {
-    setLoadingText('読み込み中...')
+    setIsLoading(true)
     const fetchBlogList = async () => {
       const response = await fetch('api/GET').then((res) => res.json())
       setBlogList(response)
-      setLoadingText('')
+      setIsLoading(false)
     }
     fetchBlogList()
   }, [])
@@ -73,8 +73,8 @@ export const BlogList = () => {
 
   return (
     <div className={styles.wrapper}>
+      {isLoading === true && <Icon icon='loading' />}
       <ModalComonent />
-      <p>{loadingText}</p>
       <ul className={styles.list}>
         {blogList.map((v) => (
           <BlogItem blog={v} key={v.id} accept={'購入'} onClick={() => handleModal(v)} />
