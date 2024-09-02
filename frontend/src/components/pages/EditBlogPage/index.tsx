@@ -1,7 +1,8 @@
+import EditBlogTemplate from '@/components/templates/EditBlogTemplate'
 import React from 'react'
 
 const EditBlogPage = () => {
-  return <div>EditBlogPage</div>
+  return <EditBlogTemplate />
 }
 
 export default EditBlogPage
