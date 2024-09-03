@@ -12,12 +12,15 @@ interface Props {
   menu: { label: string; href: string }[]
 }
 
-const PullDownMenu = ({ children, userEmail, category, iconURL, menu }: PropsWithChildren<Props>) => {
+const Dropdown = ({ children, userEmail, category, iconURL, menu }: PropsWithChildren<Props>) => {
   // プルダウン開閉状態
   const [isOpen, setIsOepn] = useState(false)
 
   // プルダウン開閉状態の切り替え
-  const handleClcik = () => setIsOepn(!isOpen)
+  const handleClick = (e: React.MouseEvent<HTMLInputElement>) => {
+    // e.preventDefault()
+    setIsOepn(false)
+  }
 
   const Menu = () => {
     if (!isOpen) return
@@ -35,10 +38,10 @@ const PullDownMenu = ({ children, userEmail, category, iconURL, menu }: PropsWit
 
   return (
     <div className={styles.wrapper}>
-      <IconButton iconURL={iconURL} onClick={handleClcik}></IconButton>
+      <IconButton iconURL={iconURL} onClick={() => setIsOepn(!isOpen)}></IconButton>
       <Menu />
     </div>
   )
 }
 
-export default PullDownMenu
+export default Dropdown

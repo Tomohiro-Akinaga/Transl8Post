@@ -3,7 +3,7 @@ import styles from './index.module.css'
 import TextLink from '@/components/atoms/TextLink'
 import SiteLogo from '@/components/atoms/SiteLogo'
 import { getSession } from '@auth0/nextjs-auth0'
-import PullDownMenu from '@/components/molecules/PullDownMenu'
+import Dropdown from '@/components/molecules/Dropdown'
 
 export const Header = async () => {
   // ログインしているユーザー情報を取得
@@ -47,12 +47,7 @@ export const Header = async () => {
   const AuthLink = () => {
     if (session)
       return (
-        <PullDownMenu
-          category={'profile'}
-          userEmail={user?.email}
-          iconURL={user?.picture}
-          menu={profileMenu}
-        ></PullDownMenu>
+        <Dropdown category={'profile'} userEmail={user?.email} iconURL={user?.picture} menu={profileMenu}></Dropdown>
       )
     return <TextLink href='/api/auth/login'>ログイン</TextLink>
   }
