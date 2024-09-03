@@ -3,7 +3,7 @@ import styles from './index.module.css'
 
 interface Props extends Omit<ComponentPropsWithoutRef<'button'>, 'className'> {
   size: 'small' | 'large'
-  category: 'auth' | 'accept' | 'cancel'
+  category: 'accept' | 'cancel'
   onClick?: () => void
 }
 
