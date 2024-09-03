@@ -8,7 +8,9 @@ interface Props extends ComponentPropsWithoutRef<'input'> {
   setInputValue: (value: string) => void
   label?: string
 }
-
+/**
+ * moleculesに移動する
+ */
 const InputArea = ({ children, type, label, inputValue, setInputValue }: PropsWithChildren<Props>) => {
   const ref = useRef<HTMLInputElement>(null)
 
